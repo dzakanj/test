@@ -2,7 +2,7 @@ version: '3.8'
 services: 
   test-react:
     container_name: test-react-app
-    image: dbynar/demo-app:1:0
+    image: dbynar/demo-app:1.0
     ports: 
       - 3000:80
   postgres:
