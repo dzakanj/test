@@ -19,7 +19,7 @@ pipeline{
         stage("deploy"){
             steps {
                 sshagent(['ec2-server-key']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@18.156.198.140 docker run -p 3000:80 -d dbynar/demo-app:1:0"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@18.156.198.140 docker run -d -p 3000:80 dbynar/demo-app:1.0"
                 }
             }
         }
