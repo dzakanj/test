@@ -19,7 +19,8 @@ pipeline{
         stage("deploy"){
             steps {
                 sshagent(['ec2-server-key']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@18.156.198.140 docker run -d -p 3000:80 dbynar/demo-app:1.0"
+                    sh "scp docker-compose.yml ec2-user@18.156.198.140:/home/ec2-user"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@18.156.198.140 docker-compose -f docker-compose.yml up -d"
                 }
             }
         }
